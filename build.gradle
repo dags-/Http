@@ -1,0 +1,32 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '1.2.4'
+    id 'maven'
+    id 'java'
+}
+
+group 'me.dags'
+version '1.0-SNAPSHOT'
+
+configurations {
+    compile.extendsFrom shadow
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    shadow 'org.nanohttpd:nanohttpd:2.3.1'
+    shadow 'com.squareup.okhttp3:okhttp:3.9.0'
+}
+
+shadowJar {
+    configurations = [project.configurations.shadow]
+    relocate 'okio.', 'me.dags.http.client.'
+    relocate 'okhttp3.', 'me.dags.http.client.'
+    relocate 'fi.iki.elonen.', 'me.dags.http.server.'
+    classifier = null
+}
+
+jar.dependsOn shadowJar
+jar.enabled = false
