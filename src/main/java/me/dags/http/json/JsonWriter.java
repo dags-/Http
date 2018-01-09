@@ -54,10 +54,11 @@ public class JsonWriter {
                 }
             }
             newLine();
+            decIndent();
+            indent();
+        } else {
+            decIndent();
         }
-
-        decIndent();
-        indent();
         appendable.append('}');
     }
 
@@ -76,10 +77,11 @@ public class JsonWriter {
                 }
             }
             newLine();
+            decIndent();
+            indent();
+        } else {
+            decIndent();
         }
-
-        decIndent();
-        indent();
         appendable.append(']');
     }
 

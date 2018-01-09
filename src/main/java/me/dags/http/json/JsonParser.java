@@ -85,6 +85,7 @@ public class JsonParser {
             }
 
             if (current == '}') {
+                next();
                 break;
             }
         }
@@ -104,6 +105,7 @@ public class JsonParser {
             }
 
             if (current == ']') {
+                next();
                 break;
             }
         }
